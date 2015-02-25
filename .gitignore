@@ -1,1 +1,4 @@
 /cookbooks/
+.vagrant
+id_rsa_datalink
+id_rsa_datalink.pub

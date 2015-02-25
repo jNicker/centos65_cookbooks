@@ -1,12 +1,6 @@
 {
   "run_list": [
-    "recipe[nginx]",
-    "recipe[redis]",
-    "recipe[rails-dependencies]",
-    "recipe[ssh]",
-    "recipe[user-deployer]",
-    "recipe[selinux::disabled]",
-    "recipe[rvm::user_install]"
+    "role[web]"
   ],
   "automatic": {
     "ipaddress": "mops"
