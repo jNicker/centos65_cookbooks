@@ -4,5 +4,5 @@ rvm_install_flags: '--auto-dotfiles --user-install'
 
 
 rubies:
-  - 'ruby-2.1.2'
+  - 'ruby-2.1.5'
 

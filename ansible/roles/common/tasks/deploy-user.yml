@@ -2,10 +2,12 @@
 
 - name: Add Deployment User
   user: name={{ user }} password={{ password }} groups='wheel'
+  sudo: yes
 
 - name: Enable passwordless sudo for User
   template:
     src: passwordless-sudo.j2
     dest: '/etc/sudoers.d/{{ user }}'
     mode: 0440
+  sudo: yes
 
