@@ -13,11 +13,11 @@
   },
   "rbenv":{
     "rubies": [
-      "2.1.5"
+      "2.1.2"
     ],
-    "global" : "2.1.5",
+    "global" : "2.1.2",
     "gems": {
-      "2.1.5" : [
+      "2.1.2" : [
         {"name":"bundler"}
       ]
     }
@@ -42,8 +42,9 @@
   "run_list":
   [
     //"role[server]",
-    "role[nginx]",
-    "role[redis]"
+    //"role[nginx]",
+    //"role[redis]",
+    "role[ruby]"
     //"role[postgres-server]",
     //"role[rails-app]",
     //"role[redis-server]"
