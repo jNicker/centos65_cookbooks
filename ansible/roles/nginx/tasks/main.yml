@@ -1,0 +1,7 @@
+---
+- name: Install Nginx from Yum
+  yum: name=nginx state=latest enablerepo=epel
+
+- name: Enable Nginx at boot
+  shell: chkconfig nginx on
+

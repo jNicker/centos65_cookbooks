@@ -1,9 +1,0 @@
-{
-   "name": "redis2",
-   "description": "Redis server",
-   "json_class": "Chef::Role",
-   "run_list": [
-      "recipe[redis2::auto]"
-   ],
-   "chef_type": "role"
-}
