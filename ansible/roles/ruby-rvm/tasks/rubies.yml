@@ -1,0 +1,23 @@
+---
+
+- name: Detect if rubies are installed
+  command: '{{ rvm }} {{ item }} do true'
+  failed_when: False
+  changed_when: False
+  register: detected_rubies
+  with_items: rubies
+
+- name: Install rubies
+  command: '{{ rvm }} install {{ item.item }}'
+  with_items: detected_rubies.results
+  sudo_user: '{{ user }}'
+
+- name: Detect default ruby version
+  command: '{{ rvm }} alias list default'
+  changed_when: False
+  register: detected_default_ruby_version
+
+- name: Select default ruby
+  command: '{{ rvm }} alias create default {{ default_ruby_version }}'
+  when: detected_default_ruby_version.stdout == '' or default_ruby_version not in detected_default_ruby_version.stdout
+

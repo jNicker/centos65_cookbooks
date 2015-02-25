@@ -8,4 +8,6 @@
     password: deployer
   roles:
   - { role: common }
-  - { role: nginx}
+  - { role: nginx }
+  - { role: redis }
+  - { role: ruby-rvm }

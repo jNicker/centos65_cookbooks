@@ -1,7 +1,19 @@
 ---
-- name: Install Nginx from Yum
-  yum: name=nginx state=latest enablerepo=epel
+- name: Install the epel packages
+  yum: name=epel-release state=present
 
-- name: Enable Nginx at boot
-  shell: chkconfig nginx on
+- name: Install Nginx From Yum
+  yum: name=nginx state=latest
+
+- name: Remove Default Nginx Sites
+  file: path=/etc/nginx/conf.d/{{ item }} state=absent
+  with_items:
+    - default.conf
+    - ssl.conf
+    - virtual.conf
+  notify: Restart Nginx
+
+- name: Enable Nginx At Boot
+  service: name=nginx state=started enabled=yes
+
 

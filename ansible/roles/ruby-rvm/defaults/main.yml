@@ -1,0 +1,7 @@
+---
+
+default_ruby_version: '{{ rubies | last if rubies and rubies is iterable else "" }}'
+
+rvm_install_path: '/home/{{ user }}/.rvm'
+
+rvm: '{{ rvm_install_path }}/bin/rvm'

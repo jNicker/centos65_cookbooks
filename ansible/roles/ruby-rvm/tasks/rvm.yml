@@ -1,0 +1,49 @@
+---
+
+- name: Detect rvm binary
+  stat: path='{{ rvm }}'
+  register: rvm_binary
+
+- name: Detect rvm installer
+  stat: path=/tmp/rvm-installer.sh
+  register: rvm_installer
+
+- name: Detect current rvm version
+  command: '{{ rvm }} version'
+  changed_when: False
+  register: rvm_current_version
+  when: rvm_binary.stat.exists
+
+- name: Install rvm installer
+  get_url:
+    url: 'https://raw.githubusercontent.com/wayneeseguin/rvm/master/binscripts/rvm-installer'
+    dest: '/tmp/rvm-installer.sh'
+  when: not rvm_installer.stat.exists
+
+- name: Configure rvm installer
+  file:
+    path: '/tmp/rvm-installer.sh'
+    mode: 0755
+  when: not rvm_binary.stat.exists
+
+- name: Import GPG keys
+  command: 'gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3'
+  sudo_user: '{{ user }}'
+
+- name: Install rvm
+  command: >
+    /tmp/rvm-installer.sh stable
+    --path {{ rvm_install_path }} --auto-dotfiles --user-install
+  when: not rvm_binary.stat.exists
+  sudo_user: '{{ user }}'
+
+- name: Update rvm
+  shell: '{{ rvm }} get stable && {{ rvm }} reload'
+  changed_when: False
+  when: rvm_binary.stat.exists
+  sudo_user: '{{ user }}'
+
+- name: Configure rvm
+  command: '{{ rvm }} autolibs 3'
+  when: not rvm_binary.stat.exists
+  sudo_user: '{{ user }}'
