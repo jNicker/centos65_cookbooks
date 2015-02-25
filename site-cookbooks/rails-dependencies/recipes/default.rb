@@ -12,12 +12,18 @@ package "epel-release" do
   action :install
 end
 
-package "imagmagik" do
-  action :install
+packages = [
+  "ImageMagick",
+  "ImageMagick-devel",
+  "nodejs"
+]
+
+packages.each do |pkg|
+  package pkg do
+    action :install
+  end
 end
 
-package "nodejs" do
-  action :install
-end
+
 
 

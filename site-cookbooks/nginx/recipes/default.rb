@@ -15,16 +15,16 @@ package "nginx" do
   action :install
 end
 
-file "/etc/nginx/conf.d/default.conf" do
-  action :delete
-end
+nginx_default_files = [
+  "default.conf",
+  "virtual.conf",
+  "ssl.conf"
+]
 
-file "/etc/nginx/conf.d/virtual.conf" do
-  action :delete
-end
-
-file "/etc/nginx/conf.d/ssl.conf" do
-  action :delete
+nginx_default_files.each do |f|
+  file "/etc/nginx/conf.d/#{f}" do
+    action :delete
+  end
 end
 
 service "nginx" do

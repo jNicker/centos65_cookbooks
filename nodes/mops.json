@@ -3,6 +3,7 @@
     "recipe[nginx]",
     "recipe[redis]",
     "recipe[rails-dependencies]",
+    "recipe[ssh]",
     "recipe[user-deployer]"
   ],
   "automatic": {
