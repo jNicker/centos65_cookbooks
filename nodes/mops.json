@@ -4,9 +4,18 @@
     "recipe[redis]",
     "recipe[rails-dependencies]",
     "recipe[ssh]",
-    "recipe[user-deployer]"
+    "recipe[user-deployer]",
+    "recipe[selinux::disabled]",
+    "recipe[rvm::user_install]"
   ],
   "automatic": {
     "ipaddress": "mops"
+  },
+  "rvm": {
+    "user_install_rubies": true,
+    "installs": {
+      "deployer": true
+    }
   }
 }
+
