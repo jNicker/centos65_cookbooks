@@ -21,7 +21,7 @@
     "recipe[ssh]",
     "recipe[user-deployer]",
     "recipe[selinux::disabled]",
-    "recipe[rvm::user_install]"
+    "recipe[rvm::user_install]",
     "recipe[simple_iptables::redhat]"
   ],
   "env_run_lists": {

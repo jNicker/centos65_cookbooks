@@ -3,3 +3,4 @@
 id_rsa_datalink
 id_rsa_datalink.pub
 .DS_Store
+VagrantFile
