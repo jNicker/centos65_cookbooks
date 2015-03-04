@@ -2,7 +2,7 @@
 # Cookbook Name:: nginx
 # Recipe:: default
 #
-# Copyright 2015, YOUR_COMPANY_NAME
+# Copyright 2015, Datalink
 #
 # All rights reserved - Do Not Redistribute
 #
